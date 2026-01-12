@@ -107,13 +107,6 @@
   background-color: #e30613;
 }
 
-.col-divider {
-  color: #ccc;
-  margin-right: 8px;
-  font-size: 14px;
-  display: none;
-}
-
 /* Column widths */
 .col-checkbox,
 .col-menu {
