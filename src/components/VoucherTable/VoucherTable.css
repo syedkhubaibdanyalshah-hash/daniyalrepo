@@ -115,6 +115,13 @@
   padding: 8px 6px;
 }
 
+.col-divider {
+  color: #ccc;
+  margin-right: 8px;
+  font-size: 14px;
+  display: none;
+}
+
 .column-icon {
   width: 18px;
   height: 18px;
