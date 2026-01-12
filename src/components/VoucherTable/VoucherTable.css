@@ -1,0 +1,366 @@
+.voucher-table-container {
+  width: 100%;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.voucher-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+}
+
+/* Header styles */
+.voucher-table thead tr {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+}
+
+.voucher-table th {
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 500;
+  color: #666;
+  position: relative;
+  white-space: nowrap;
+  cursor: grab;
+  user-select: none;
+}
+
+.voucher-table th:active {
+  cursor: grabbing;
+}
+
+/* Drag handle */
+.drag-handle {
+  color: #ccc;
+  margin-left: 8px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.voucher-table th:hover .drag-handle {
+  opacity: 1;
+}
+
+/* Dragging styles */
+.voucher-table th.dragging {
+  opacity: 0.5;
+  background-color: #e8e8e8;
+}
+
+.voucher-table th.drag-over {
+  border-left: 3px solid #e30613 !important;
+}
+
+/* Non-draggable column */
+.voucher-table th.no-drag {
+  cursor: default;
+}
+
+.voucher-table th.no-drag:active {
+  cursor: default;
+}
+
+/* Selected column red bar */
+.voucher-table th.selected-start {
+  position: relative;
+}
+
+.voucher-table th.selected-start::before {
+  content: "";
+  position: absolute;
+  top: 0;
+ 
+  left: 0;
+  width: 6px;
+  height: 5px;
+  background-color: #e30613;
+  border-top-left-radius: 8px;
+}
+
+.voucher-table th.selected-start::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 6px;
+  right: 0;
+  height: 5px;
+  background-color: #e30613;
+}
+
+.voucher-table th.selected-end {
+  position: relative;
+}
+
+.voucher-table th.selected-end::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: #e30613;
+}
+
+.col-divider {
+  color: #ccc;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* Column widths */
+.col-checkbox,
+.col-menu {
+  width: 36px;
+  text-align: center;
+  padding: 8px 6px;
+}
+
+.column-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.col-name { min-width: 120px; border-left: 1px solid #F6F6F6; }
+.col-type { min-width: 80px; border-left: 1px solid #F6F6F6; }
+.col-amount { min-width: 80px; border-left: 1px solid #F6F6F6; }
+.col-code { min-width: 110px; border-left: 1px solid #F6F6F6; }
+.col-expiry { min-width: 100px; border-left: 1px solid #F6F6F6; }
+.col-assign { min-width: 160px; border-left: 1px solid #F6F6F6; }
+.col-status { min-width: 70px; border-left: 1px solid #F6F6F6; }
+
+/* Remove border on selected columns */
+.voucher-table th.col-name.selected-end { border-left: none; }
+.voucher-table th.selected-start { border-left: none; }
+.voucher-table th.selected-end { border-left: none; }
+
+/* Body styles */
+.voucher-table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.voucher-table tbody tr:hover {
+  background-color: #fafafa;
+}
+
+.voucher-table td {
+  padding: 8px 12px;
+  color: #333;
+  vertical-align: middle;
+}
+
+/* Checkbox */
+.voucher-table input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #e30613;
+}
+
+/* Menu button and dropdown */
+.menu-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #999;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.menu-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  min-width: 100px;
+  overflow: hidden;
+}
+
+.dropdown-menu button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: #333;
+  text-align: left;
+}
+
+.dropdown-menu button:hover {
+  background-color: #fef2f2;
+}
+
+.dropdown-menu button span {
+  color: #999;
+  margin-left: 12px;
+}
+
+/* Toggle switch */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle input:checked + .toggle-slider {
+  background-color: #34c759;
+}
+
+.toggle input:checked + .toggle-slider:before {
+  transform: translateX(16px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .voucher-table {
+    font-size: 12px;
+  }
+
+  .voucher-table th,
+  .voucher-table td {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .voucher-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .voucher-table {
+    font-size: 11px;
+    min-width: 700px;
+  }
+
+  .voucher-table th,
+  .voucher-table td {
+    padding: 8px 10px;
+  }
+
+  .col-name { min-width: 100px; }
+  .col-type { min-width: 60px; }
+  .col-amount { min-width: 60px; }
+  .col-code { min-width: 90px; }
+  .col-expiry { min-width: 80px; }
+  .col-assign { min-width: 120px; }
+  .col-status { min-width: 60px; }
+
+  .col-checkbox,
+  .col-menu {
+    width: 32px;
+    padding: 8px 4px;
+  }
+
+  .toggle {
+    width: 32px;
+    height: 18px;
+  }
+
+  .toggle-slider:before {
+    height: 14px;
+    width: 14px;
+  }
+
+  .toggle input:checked + .toggle-slider:before {
+    transform: translateX(14px);
+  }
+
+  .drag-handle {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .voucher-table {
+    font-size: 10px;
+    min-width: 600px;
+  }
+
+  .voucher-table th,
+  .voucher-table td {
+    padding: 6px 8px;
+  }
+
+  .col-divider {
+    font-size: 12px;
+    margin-right: 4px;
+  }
+
+  .col-name { min-width: 80px; }
+  .col-type { min-width: 50px; }
+  .col-amount { min-width: 50px; }
+  .col-code { min-width: 70px; }
+  .col-expiry { min-width: 70px; }
+  .col-assign { min-width: 100px; }
+  .col-status { min-width: 50px; }
+
+  .menu-btn {
+    padding: 2px 4px;
+    font-size: 14px;
+  }
+
+  .dropdown-menu {
+    min-width: 90px;
+  }
+
+  .dropdown-menu button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}
