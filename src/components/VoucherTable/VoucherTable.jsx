@@ -18,7 +18,7 @@ const vouchersData = [
 ]
 
 const initialColumns = [
-  { id: 'name', label: 'Voucher Name', key: 'name', draggable: true },
+  { id: 'name', label: 'Voucher Name', draggable: true },
   { id: 'type', label: 'Type', key: 'type', draggable: true },
   { id: 'amount', label: 'Amount', key: 'amount', draggable: true },
   { id: 'code', label: 'Voucher Code', key: 'code', draggable: true },
